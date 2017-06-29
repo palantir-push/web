@@ -8,6 +8,9 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
+import firebase from 'firebase/app'
+require('firebase/messaging')
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -19,6 +22,7 @@ const isLocalhost = Boolean(
 );
 
 export default function register() {
+
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
@@ -47,6 +51,7 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
@@ -66,10 +71,42 @@ function registerValidSW(swUrl) {
           }
         };
       };
+
+      ////////////////////////////////////////////////////////////////
+      // Cloud messaging
+      ////////////////////////////////////////////////////////////////
+      firebase.initializeApp({
+        'messagingSenderId': '36714301153'
+      });
+
+      // Retrieve an instance of Firebase Messaging so that it can handle background
+      // messages.
+      const messaging = firebase.messaging();
+
+      // If you would like to customize notifications that are received in the
+      // background (Web app is closed or not in browser focus) then you should
+      // implement this optional method.
+      // [START background_handler]
+      messaging.setBackgroundMessageHandler(function(payload) {
+        console.log('[firebase-messaging-sw.js] Received background message ', payload);
+        // Customize notification here
+        const notificationTitle = 'Background Message Title';
+        const notificationOptions = {
+          body: 'Background Message body.',
+          // icon: '/firebase-logo.png'
+        };
+
+        return registration.showNotification(notificationTitle,
+          notificationOptions);
+      });
+
+      console.log('Serviceworker registration ok');
+
     })
     .catch(error => {
       console.error('Error during service worker registration:', error);
     });
+
 }
 
 function checkValidServiceWorker(swUrl) {
@@ -106,3 +143,4 @@ export function unregister() {
     });
   }
 }
+
