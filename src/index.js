@@ -32,7 +32,7 @@ var authSecret;
 
 
 if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker.register(process.env.PUBLIC_URL+'/sw.js')
 
     .then(function(registration) {
       console.log('Serviceworker registration succeeded');
