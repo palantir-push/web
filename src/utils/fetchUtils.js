@@ -9,7 +9,6 @@ const handleFetchErrors = response => {
 export const fetchJson = (url, config = {}) =>
   fetch(url, {...config})
     .then(handleFetchErrors)
-    .then(response => response.json())
 
 
 export const postJson = (url, body, config = {}) =>
