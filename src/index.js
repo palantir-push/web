@@ -51,29 +51,6 @@ if (navigator.serviceWorker) {
 
     }).then(function(subscription) {
       store.dispatch({type:types.SET_SUBSCRIPTION, subscription})
-      // var rawKey = subscription.getKey ? subscription.getKey('p256dh') : '';
-      // key = rawKey
-      //   ? btoa(String.fromCharCode.apply(null, new Uint8Array(rawKey)))
-      //   : '';
-      // var rawAuthSecret = subscription.getKey ? subscription.getKey('auth') : '';
-      //   authSecret = rawAuthSecret
-      //     ? btoa(String.fromCharCode.apply(null, new Uint8Array(rawAuthSecret)))
-      //     : '';
-      // endpoint = subscription.endpoint;
-      // console.log('##### endpoint=', endpoint, authSecret);
-
-      // fetch(serviceUrl+'/users/trygve', {
-      //   method: 'post',
-      //   mode: 'cors',
-      //   headers: {
-      //     'Content-type': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     endpoint: subscription.js.endpoint,
-      //     key: key,
-      //     authSecret: authSecret,
-      //   }),
-      // });
 
 
   }).catch(function(error) {
