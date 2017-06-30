@@ -15,3 +15,19 @@ export const registerUser = user => (dispatch, getState) => {
     body: JSON.stringify(subscription)
   });
 }
+
+export const unregisterUser = user => (dispatch, getState) => {
+  console.log('##### Unregistering user:', user.userName);
+
+  window.localStorage.userName = null
+
+  const subscription = getState().subscription
+  fetch(serviceUrl+'/users/'+user.userName+'/unregister', {
+    method: 'post',
+    mode: 'cors',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(subscription)
+  });
+}

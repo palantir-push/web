@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import RegisterUser from './RegisterUser'
+import {unregisterUser} from '../actions/creators/user'
 
 class UserInfo extends Component {
   render() {
@@ -13,7 +14,12 @@ class UserInfo extends Component {
         {!userName
           ? <RegisterUser/>
           : <div>
-            Du er pålogget som bruker: {userName}
+              <div>
+                Du er registrert som bruker: {userName}
+              </div>
+              <div>
+                <button onClick={unregisterUser}>Av-registrer</button>
+              </div>
           </div>}
       </div>
     );
@@ -26,4 +32,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
+  {unregisterUser}
 )(UserInfo)
