@@ -1,15 +1,7 @@
-import * as types from '../actions'
+import { combineReducers } from 'redux'
 
-const initialState = {}
+import subscription from './subscription'
 
-export default function(state = initialState, action = {}) {
-
-  switch (action.type) {
-
-    case 'FOO':
-      return state
-
-    default:
-      return state
-  }
-}
+export default combineReducers({
+  subscription,
+})

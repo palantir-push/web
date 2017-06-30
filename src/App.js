@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RegisterUser from './RegisterUser'
 import logo from './logo.svg';
 import './App.css';
 
@@ -14,6 +15,7 @@ class App extends Component {
         <p className="App-intro">
           Just wait some hours and exciting things will start happening here...
         </p>
+        <RegisterUser/>
       </div>
     );
   }

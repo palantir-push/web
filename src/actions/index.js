@@ -1,2 +1,2 @@
 
-const FOO = 'FOO'
+export const SET_SUBSCRIPTION = 'SET_SUBSCRIPTION'
