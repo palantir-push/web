@@ -1,2 +1,4 @@
 
 export const SET_SUBSCRIPTION = 'SET_SUBSCRIPTION'
+
+export const SET_USERNAME = 'SET_USERNAME'

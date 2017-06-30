@@ -25,6 +25,10 @@ ReactDOM.render(
 // registerServiceWorker()
 
 
+if (window.localStorage.userName) {
+  store.dispatch({type:types.SET_USERNAME, userName: window.localStorage.userName})
+}
+
 const serviceUrl = 'https://palantir-push-api.herokuapp.com'
 
 var endpoint;
