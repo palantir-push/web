@@ -5,7 +5,7 @@ import {unregisterUser} from '../actions/creators/user'
 
 class UserInfo extends Component {
   render() {
-    const {userName} = this.props
+    const {userName, unregisterUser} = this.props
     return (
       <div className="UserInfo">
         <p className="App-intro">
@@ -18,7 +18,7 @@ class UserInfo extends Component {
                 Du er registrert som bruker: {userName}
               </div>
               <div>
-                <button onClick={unregisterUser}>Av-registrer</button>
+                <button onClick={unregisterUser}>Av-registrer {userName}</button>
               </div>
           </div>}
       </div>

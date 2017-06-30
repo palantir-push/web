@@ -8,6 +8,7 @@ import rootReducer from './reducers'
 import App from './App'
 import * as types from './actions'
 import registerServiceWorker from './registerServiceWorker'
+import {setUsername} from './actions/creators/user'
 import './index.css'
 
 const store = createStore(rootReducer, composeWithDevTools(
@@ -26,7 +27,7 @@ ReactDOM.render(
 
 
 if (window.localStorage.userName) {
-  store.dispatch({type:types.SET_USERNAME, userName: window.localStorage.userName})
+  store.dispatch(setUsername(window.localStorage.userName))
 }
 
 const serviceUrl = 'https://palantir-push-api.herokuapp.com'
